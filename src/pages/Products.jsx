@@ -1,6 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { context } from '../context/AppProvider';
 
+import Form from '../component/Form'
+
 export default function Products() {
   const {
     listProduct, setListProduct
@@ -25,28 +27,31 @@ export default function Products() {
   }, 0)
 
   return(
-    <div>
-      <p>Total: { totalPrice.toFixed(2) }</p>
-      <ul>
-      {
-        listProduct.map((product, index) =>
-          <li key={ index }>
-            <p>{ product.name }</p>
-            <p>{ product.price }</p>
-            {
-              product.impost === '6.5'
-              ? <p>{ `R$ ${ ((product.price * 5.30) + (product.price * 5.30 * 0.065)).toFixed(2) }` }</p>
-              : <p>{ `R$ ${ (product.price * 5.30).toFixed(2) }` }</p>
-            }
-            <button
-              onClick={ () => removeProduct(product) }
-            >
-              remover
-            </button>
-          </li>
-        )
-      }
-      </ul>
-    </div>
+    <>
+      <Form />
+      <div>
+        <p>Total: { totalPrice.toFixed(2) }</p>
+        <ul>
+        {
+          listProduct.map((product, index) =>
+            <li key={ index }>
+              <p>{ product.name }</p>
+              <p>{ product.price }</p>
+              {
+                product.impost === '6.5'
+                ? <p>{ `R$ ${ ((product.price * 5.30) + (product.price * 5.30 * 0.065)).toFixed(2) }` }</p>
+                : <p>{ `R$ ${ (product.price * 5.30).toFixed(2) }` }</p>
+              }
+              <button
+                onClick={ () => removeProduct(product) }
+              >
+                remover
+              </button>
+            </li>
+          )
+        }
+        </ul>
+      </div>
+    </>
   );
 }
