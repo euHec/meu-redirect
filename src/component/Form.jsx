@@ -23,33 +23,35 @@ export default function Form() {
   }
 
   return (
-    <form onSubmit={ (e) => addProduct(e) }>
-    <input
-      onChange={ ({ target }) => setName(target.value)}
-      type="text"
-      placeholder='Nome do produto'
-      value={ name } />
-    <input
-      onChange={ ({ target }) => setPrice(target.value)}
-      type="number"
-      placeholder='valor em dolar'
-      value={ price } />
-    <input
-      type="number"
-      defaultValue='5.30'
-      disabled
-    />
-    <label htmlFor="">Imposto
-      <select
-        value={ impost }
-        onChange={ ({ target }) => setImpost(target.value)
-      }>
-        <option value=""></option>
-        <option value="isento">Isento</option>
-        <option value="6.5">6.5%</option>
-      </select>
-    </label>
-    <input type="submit" />
-    </form>
+    <section>
+      <form onSubmit={ (e) => addProduct(e) }>
+        <input
+          onChange={ ({ target }) => setName(target.value)}
+          type="text"
+          placeholder='Nome do produto'
+          value={ name } />
+        <input
+          onChange={ ({ target }) => setPrice(target.value)}
+          type="number"
+          placeholder='valor em dolar'
+          value={ price } />
+        <input
+          type="number"
+          defaultValue='5.30'
+          disabled
+        />
+        <label htmlFor="">Imposto
+          <select
+            value={ impost }
+            onChange={ ({ target }) => setImpost(target.value)
+          }>
+            <option value=""></option>
+            <option value="isento">Isento</option>
+            <option value="6.5">6.5%</option>
+          </select>
+        </label>
+        <input type="submit" />
+      </form>
+    </section>
   );
 }

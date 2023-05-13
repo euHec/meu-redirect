@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { context } from '../context/AppProvider';
 
 import Form from '../component/Form'
+import CardProduct from '../component/CardProduct'
 
 export default function Products() {
   const {
@@ -28,30 +29,17 @@ export default function Products() {
 
   return(
     <>
+      <p>Total: { totalPrice.toFixed(2) }</p>
       <Form />
-      <div>
-        <p>Total: { totalPrice.toFixed(2) }</p>
+      <section>
         <ul>
         {
           listProduct.map((product, index) =>
-            <li key={ index }>
-              <p>{ product.name }</p>
-              <p>{ product.price }</p>
-              {
-                product.impost === '6.5'
-                ? <p>{ `R$ ${ ((product.price * 5.30) + (product.price * 5.30 * 0.065)).toFixed(2) }` }</p>
-                : <p>{ `R$ ${ (product.price * 5.30).toFixed(2) }` }</p>
-              }
-              <button
-                onClick={ () => removeProduct(product) }
-              >
-                remover
-              </button>
-            </li>
+            <CardProduct key={ index } product={ product } removeProduct={ () => removeProduct(product) } />
           )
         }
         </ul>
-      </div>
+      </section>
     </>
   );
 }
