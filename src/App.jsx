@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import './App.css';
 import { context } from './context/AppProvider';
+import generateUniqueId from './helper/generetID';
 
 function App() {
   const {
@@ -17,22 +18,28 @@ function App() {
 
   const addProduct = (e) => {
     e.preventDefault();
-    setListProduct((prev) => [...prev, { name, price, impost }])
+    const id = generateUniqueId();
+    setListProduct((prev) => [...prev, { id, name, price, impost }])
     const list = JSON.parse(localStorage.getItem('listOfProducts')) || [];
-    localStorage.setItem('listOfProducts', JSON.stringify([...list, { name, price, impost }]))
+    localStorage.setItem('listOfProducts', JSON.stringify([...list, { id, name, price, impost }]))
 
     setName('')
-    setPrice('')
+    setPrice(0)
     setImpost('')
   }
 
-  const removeProduct = ({ name, price, impost }) => {
-    const newListProducts = listProduct.filter((product) => product.name !== name);
+  const removeProduct = ({ id }) => {
+    const newListProducts = listProduct.filter((product) => product.id !== id);
     setListProduct(newListProducts)
     localStorage.setItem('listOfProducts', JSON.stringify(newListProducts))
   }
 
-  const totalPrice = listProduct?.reduce((total, product) => total + (product.price * 5.30), 0);
+  const totalPrice = listProduct?.reduce((total, product) => {
+    if (product.impost === '6.5') {
+      return (total + ((product.price * 5.30) + (product.price * 5.30 * 0.065))) ;
+    }    
+    return (total + (product.price * 5.30));
+  }, 0)
 
   return (
     <>
@@ -52,7 +59,7 @@ function App() {
           value={ price } />
         <input
           type="number"
-          value='5.30'
+          defaultValue='5.30'
           disabled
         />
         <label htmlFor="">Imposto
@@ -68,20 +75,26 @@ function App() {
         <input type="submit" />
       </form>
       <div>
+        <ul>
         {
           listProduct.map((product, index) =>
-            <ul key={ index }>
+            <li key={ index }>
               <p>{ product.name }</p>
               <p>{ product.price }</p>
-              <p>{ `R$ ${product.price * 5.30}` }</p>
+              {
+                product.impost === '6.5'
+                ? <p>{ `R$ ${ ((product.price * 5.30) + (product.price * 5.30 * 0.065)).toFixed(2) }` }</p>
+                : <p>{ `R$ ${ (product.price * 5.30).toFixed(2) }` }</p>
+              }
               <button
                 onClick={ () => removeProduct(product) }
               >
                 remover
               </button>
-            </ul>
+            </li>
           )
         }
+        </ul>
       </div>
     </>
   );

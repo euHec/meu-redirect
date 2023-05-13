@@ -4,7 +4,7 @@ export const context = createContext();
 
 export default function Provider({ children }) {
   const [name, setName] = useState('');
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState(0);
   const [impost, setImpost] = useState('');
   const [listProduct, setListProduct] = useState([]);
 
