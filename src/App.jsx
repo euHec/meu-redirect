@@ -26,6 +26,12 @@ function App() {
     setImpost('')
   }
 
+  const removeProduct = ({ name, price, impost }) => {
+    const newListProducts = listProduct.filter((product) => product.name !== name);
+    setListProduct(newListProducts)
+    localStorage.setItem('listOfProducts', JSON.stringify(newListProducts))
+  }
+
   const totalPrice = listProduct?.reduce((total, product) => total + (product.price * 5.30), 0);
 
   return (
@@ -68,6 +74,11 @@ function App() {
               <p>{ product.name }</p>
               <p>{ product.price }</p>
               <p>{ `R$ ${product.price * 5.30}` }</p>
+              <button
+                onClick={ () => removeProduct(product) }
+              >
+                remover
+              </button>
             </ul>
           )
         }
