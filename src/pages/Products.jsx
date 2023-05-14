@@ -3,22 +3,20 @@ import { context } from '../context/AppProvider';
 
 import Form from '../component/Form'
 import CardProduct from '../component/CardProduct'
+import { useHistory } from 'react-router-dom';
 
 export default function Products() {
   const {
-    listProduct, setListProduct
+    listProduct, setListProduct, removeProduct
   } = useContext(context)
+
+  const { push } = useHistory();
 
   useEffect(() => {
     const list = JSON.parse(localStorage.getItem('listOfProducts')) || [];
     setListProduct(list)
   }, [setListProduct])
 
-  const removeProduct = ({ id }) => {
-    const newListProducts = listProduct.filter((product) => product.id !== id);
-    setListProduct(newListProducts)
-    localStorage.setItem('listOfProducts', JSON.stringify(newListProducts))
-  }
 
   const totalPrice = listProduct?.reduce((total, product) => {
     if (product.impost === '6.5') {
@@ -29,6 +27,7 @@ export default function Products() {
 
   return(
     <>
+      <p onClick={ () => push('/cart') }>carrinho</p>
       <p>Total: { totalPrice.toFixed(2) }</p>
       <Form />
       <section>
