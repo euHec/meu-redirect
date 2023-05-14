@@ -208,7 +208,6 @@ body {
   .container-cart > :nth-child(2) {
     display: inline-flex;
     flex-direction: column;
-    align-items: end;
     height: 180px;
     width: 100%;
   }
