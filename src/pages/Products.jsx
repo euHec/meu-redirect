@@ -3,16 +3,13 @@ import { context } from '../context/AppProvider';
 
 import Form from '../component/Form'
 import CardProduct from '../component/CardProduct'
-import { useHistory } from 'react-router-dom';
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import Header from '../component/Header';
 
 
 export default function Products() {
   const {
     listProduct, setListProduct, removeProduct
   } = useContext(context)
-
-  const { push } = useHistory();
 
   useEffect(() => {
     const list = JSON.parse(localStorage.getItem('listOfProducts')) || [];
@@ -29,18 +26,20 @@ export default function Products() {
 
   return(
     <>
-      <AiOutlineShoppingCart onClick={ () => push('/cart') } />
-      <p>Total: { totalPrice.toFixed(2) }</p>
-      <Form />
-      <section>
-        <ul>
-        {
-          listProduct.map((product, index) =>
-            <CardProduct key={ index } product={ product } removeProduct={ () => removeProduct(product) } />
-          )
-        }
-        </ul>
-      </section>
+      <Header />
+      <main>
+        <p>R$ { totalPrice.toFixed(2) }</p>
+        <Form />
+        <section className="container-products">
+          <ul>
+          {
+            listProduct.map((product, index) =>
+              <CardProduct key={ index } product={ product } removeProduct={ () => removeProduct(product) } />
+            )
+          }
+          </ul>
+        </section>
+      </main>
     </>
   );
 }

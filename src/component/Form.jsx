@@ -36,7 +36,7 @@ export default function Form() {
   }
 
   return (
-    <section>
+    <section className="container-form">
       <form onSubmit={ (e) => addProduct(e) }>
         <input
           onChange={ ({ target }) => setName(target.value)}
@@ -53,16 +53,14 @@ export default function Form() {
           defaultValue='5.30'
           disabled
         />
-        <label htmlFor="">Imposto
-          <select
-            value={ impost }
-            onChange={ ({ target }) => setImpost(target.value)
-          }>
-            <option value=""></option>
-            <option value="isento">Isento</option>
-            <option value="6.5">6.5%</option>
-          </select>
-        </label>
+        <select
+          value={ impost }
+          onChange={ ({ target }) => setImpost(target.value) }
+        >
+          <option value="">selecione o imposto</option>
+          <option value="isento">Isento</option>
+          <option value="6.5">6.5%</option>
+        </select>
         <input type="submit" disabled={ validation } />
       </form>
     </section>
