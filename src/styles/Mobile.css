@@ -10,7 +10,7 @@
 body {
   background-color: aquamarine;
   font-family: 'Josefin Sans', sans-serif;
-  /* font-weight: 900; */
+  margin: auto;
   height: 100vh;
   width: 100vw;
 }
@@ -69,8 +69,8 @@ body {
     padding: 5px;
     position: fixed;
     left: 0;
-    right: 0;
     top: 0;
+    width: 100%;
   }
 
   header p {
@@ -84,7 +84,7 @@ body {
     order: 1;
     font-size: 35px;
   }
-
+  
   .icon-cart {
     order: 3;
     font-size: 35px;
@@ -96,12 +96,31 @@ body {
     right: 10px;
   }
 
-  main {
-    display: inline;
+  .aside-false {
     position: absolute;
+    height: 90%;
+    left: -50%;
+    top: 55px;
+    width: 50%;
+  }
+
+  .aside-true {
+    position: absolute;
+    height: 90%;
+    left: 0;
+    top: 55px;
+    width: 50%;
+  }
+
+  main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    margin: auto;
     text-align: center;
-    top: 65px;
-    width: 100%;
+    width: 90%;
   }
   
   main > p:nth-child(1) {
@@ -134,17 +153,6 @@ body {
     width: 320px;
   }
 
-  .container-products {
-    margin-top: 20px;
-    height: 45vh;
-    overflow-y: scroll;
-    width: 100%;
-  }
-
-  .container-products::-webkit-scrollbar {
-    display: none;
-  }
-
   li {
     align-items: center;
     display: flex;
@@ -159,7 +167,7 @@ body {
 
   li > p:nth-child(2) {
     font-size: 20px;
-    width: 40px;
+    width: 60px;
   }
 
   li > p:nth-child(3) {
@@ -173,4 +181,26 @@ body {
     font-size: 20px;
   }
 
+  .container-cart {
+    margin-top: 65px;
+    height: 80%;
+  }
+
+  .container-cart > :nth-child(1) {
+    height: 75%;
+    overflow-y: scroll;
+  }
+
+  .container-cart > :nth-child(2) {
+    height: 25%;
+  }
+
+  h4 {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px auto;
+    width: 80%;
+  }
 }

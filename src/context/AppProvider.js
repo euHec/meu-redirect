@@ -7,6 +7,7 @@ export default function Provider({ children }) {
   const [price, setPrice] = useState(0);
   const [impost, setImpost] = useState('');
   const [listProduct, setListProduct] = useState([]);
+  const [classType, setClassType] = useState(false)
 
   const removeProduct = useCallback(({ id }) => {
     const newListProducts = listProduct.filter((product) => product.id !== id);
@@ -19,8 +20,9 @@ export default function Provider({ children }) {
     price, setPrice,
     impost, setImpost,
     listProduct, setListProduct,
+    classType, setClassType,
     removeProduct,
-  }), [name, price, impost, listProduct, removeProduct])
+  }), [name, price, impost, listProduct, removeProduct, classType])
 
   return (
     <context.Provider value={ values }>

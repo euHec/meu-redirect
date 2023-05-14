@@ -1,15 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { context } from "../context/AppProvider";
 import CardProduct from "../component/CardProduct";
-import { IoReturnDownBack } from "react-icons/io5";
-import { useHistory } from 'react-router-dom';
+import Header from "../component/Header";
+import AsideBar from "../component/AsideBar";
 
 
 export default function Cart() {
   const { listProduct, removeProduct, setListProduct } = useContext(context);
   const [servicePrice, setServicePrice] = useState(0);
-
-  const { push } = useHistory();
 
   const totalPriceREAL = listProduct?.reduce((total, product) => {
     if (product.impost === '6.5') {
@@ -48,32 +46,25 @@ export default function Cart() {
   }, [totalPriceUSD])
 
   return(
-    <section>
-     <IoReturnDownBack onClick={ () => push('/product') } />
-      <div>
-        <ul>
-          {
-            listProduct.map((product, index) =>
-            <CardProduct key={ index } product={ product } removeProduct={ () => removeProduct(product) } />
-            )
-          }
-        </ul>
-      </div>
-      <div>
-        Taxa de serviço: 
-        {
-          (servicePrice * 5.30).toFixed(2)
-        }
-      </div>
-      <div>
-        total: R$ 
-        {
-          totalPriceREAL.toFixed(2)
-        }
-      </div>
-      <div>
-        total tudo: R$ { (totalPriceREAL + (servicePrice * 5.30)).toFixed(2) }
-      </div>
-    </section>
+    <>
+      <Header />
+      <AsideBar />
+      <section className="container-cart">
+        <div>
+          <ul>
+            {
+              listProduct.map((product, index) =>
+              <CardProduct key={ index } product={ product } removeProduct={ () => removeProduct(product) } />
+              )
+            }
+          </ul>
+        </div>
+        <div>
+          <h4>Taxa de serviço: R$ { (servicePrice * 5.30).toFixed(2) }</h4>
+          <h4>Total de produtos: R$ { totalPriceREAL.toFixed(2) }</h4>
+          <h4>Total: R$ { (totalPriceREAL + (servicePrice * 5.30)).toFixed(2) }</h4>
+        </div>
+      </section>
+    </>
   );
 }
