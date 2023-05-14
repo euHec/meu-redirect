@@ -1,10 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { context } from "../context/AppProvider";
 import CardProduct from "../component/CardProduct";
+import { IoReturnDownBack } from "react-icons/io5";
+import { useHistory } from 'react-router-dom';
+
 
 export default function Cart() {
   const { listProduct, removeProduct, setListProduct } = useContext(context);
   const [servicePrice, setServicePrice] = useState(0);
+
+  const { push } = useHistory();
 
   const totalPriceREAL = listProduct?.reduce((total, product) => {
     if (product.impost === '6.5') {
@@ -27,7 +32,9 @@ export default function Cart() {
 
   useEffect(() => {
     const service = () => {
-      if (Number(totalPriceUSD) < 99) {
+      if (Number(totalPriceUSD) === 0) {
+        return 0;
+      } else if (Number(totalPriceUSD) < 99) {
         return 15;
       } else if (Number(totalPriceUSD) >= 100 && Number(totalPriceUSD) <= 150) {
         return 25;
@@ -42,7 +49,7 @@ export default function Cart() {
 
   return(
     <section>
-      Cart
+     <IoReturnDownBack onClick={ () => push('/product') } />
       <div>
         <ul>
           {

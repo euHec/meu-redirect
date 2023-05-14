@@ -4,6 +4,8 @@ import { context } from '../context/AppProvider';
 import Form from '../component/Form'
 import CardProduct from '../component/CardProduct'
 import { useHistory } from 'react-router-dom';
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
 
 export default function Products() {
   const {
@@ -27,7 +29,7 @@ export default function Products() {
 
   return(
     <>
-      <p onClick={ () => push('/cart') }>carrinho</p>
+      <AiOutlineShoppingCart onClick={ () => push('/cart') } />
       <p>Total: { totalPrice.toFixed(2) }</p>
       <Form />
       <section>

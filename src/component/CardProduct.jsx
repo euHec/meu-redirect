@@ -1,5 +1,7 @@
+import { BsTrash3Fill } from 'react-icons/bs'
+
 export default function CardProduct({ product, removeProduct}) {
-  return(
+  return (
     <>
       <li>
         <p>{ product.name }</p>
@@ -12,7 +14,7 @@ export default function CardProduct({ product, removeProduct}) {
         <button
           onClick={ removeProduct }
         >
-          remover
+          <BsTrash3Fill />
         </button>
       </li>
     </>

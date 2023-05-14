@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { context } from '../context/AppProvider';
 import generateUniqueId from '../helper/generetID';
 
@@ -9,6 +9,19 @@ export default function Form() {
     impost, setImpost,
     setListProduct,
   } = useContext(context)
+
+  const [validation, setValidation] = useState(true);
+
+  useEffect(() => {
+    if(
+      name !== ''
+      && price !== ''
+      && impost !== '') {
+      setValidation(false)
+    } else {
+      setValidation(true)
+    }
+  }, [name, price, impost, setValidation])
 
   const addProduct = (e) => {
     e.preventDefault();
@@ -50,7 +63,7 @@ export default function Form() {
             <option value="6.5">6.5%</option>
           </select>
         </label>
-        <input type="submit" />
+        <input type="submit" disabled={ validation } />
       </form>
     </section>
   );
