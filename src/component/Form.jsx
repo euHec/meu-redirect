@@ -47,7 +47,9 @@ export default function Form() {
           onChange={ ({ target }) => setPrice(target.value)}
           type="number"
           placeholder='valor em dolar'
-          value={ price } />
+          value={ price }
+          min={ 0 }
+        />
         <input
           type="number"
           defaultValue='5.30'
