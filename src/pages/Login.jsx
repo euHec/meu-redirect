@@ -17,11 +17,33 @@ export default function Login() {
   }, [email])
 
   return(
-    <div>
-      <input type="text" value={ name } onChange={ ({ target }) => setName(target.value)} />
-      <input type="email" value={ email } onChange={ ({ target }) => setEmail(target.value)} />
-      <input type="button" value="Entrar" disabled={ validation } 
-        onClick={ () => push('/product') }/>
-    </div>
+    <>
+      <div className="logo">
+        Meu Redirect <span>!</span>
+      </div>
+      <div className="conteiner-login">
+        <input
+          className="input-login"
+          type="text"
+          value={ name }
+          onChange={ ({ target }) => setName(target.value) }
+          placeholder="Digite seu nome"
+        />
+        <input
+          className="input-login"
+          type="email"
+          value={ email }
+          onChange={ ({ target }) => setEmail(target.value) }
+          placeholder="Digite seu e-mail"
+        />
+        <input
+          className="input-login"
+          type="button"
+          value="Entrar"
+          disabled={ validation } 
+          onClick={ () => push('/product') }
+        />
+      </div>
+    </>
   );
 }

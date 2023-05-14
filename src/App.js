@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import './App.css';
+import './styles/Mobile.css';
 import Login from './pages/Login';
 import Products from './pages/Products';
 import Cart from './pages/Cart';
