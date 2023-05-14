@@ -27,8 +27,8 @@ export default function Header() {
         </span>
         {
           pathname === '/product'
-          ? <AiOutlineShoppingCart onClick={ () => push('/cart') } />
-          : <IoReturnDownBack onClick={ () => push('/product') } />
+          ? <AiOutlineShoppingCart onClick={ () => push('/meu-redirect/cart') } />
+          : <IoReturnDownBack onClick={ () => push('/meu-redirect/product') } />
         }
       </label>
     </header>

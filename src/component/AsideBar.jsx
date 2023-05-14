@@ -10,7 +10,7 @@ export default function AsideBar() {
   return (
     <div className={ `aside aside-${classType}` }>
       <p onClick={ () => {
-          push('/product')
+          push('/meu-redirect/product')
           setClassType(!classType)
         }
       }
@@ -18,7 +18,7 @@ export default function AsideBar() {
       </p>
       <p onClick={
         () => {
-          push('/cart')
+          push('/meu-redirect/cart')
           setClassType(!classType)
         }
       }
@@ -26,7 +26,7 @@ export default function AsideBar() {
         Carrinho</p>
       <p onClick={
         () => {
-          push('/')
+          push('/meu-redirect/')
           setClassType(!classType)
         } 
       }

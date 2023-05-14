@@ -17,11 +17,11 @@ export default function Login() {
   }, [email])
 
   return(
-    <>
-      <div className="logo">
+    <div className="conteiner-login">
+      <h1 className="logo">
         Meu Redirect <span>!</span>
-      </div>
-      <div className="conteiner-login">
+      </h1>
+      <div className="login">
         <input
           className="input-login"
           type="text"
@@ -41,9 +41,9 @@ export default function Login() {
           type="button"
           value="Entrar"
           disabled={ validation } 
-          onClick={ () => push('/product') }
+          onClick={ () => push('/meu-redirect/product') }
         />
       </div>
-    </>
+    </div>
   );
 }
