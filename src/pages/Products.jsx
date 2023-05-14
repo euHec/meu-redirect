@@ -20,9 +20,9 @@ export default function Products() {
 
   const totalPrice = listProduct?.reduce((total, product) => {
     if (product.impost === '6.5') {
-      return (total + ((product.price * 5.30) + (product.price * 5.30 * 0.065))) ;
+      return (total + ((Number(product.price) * 5.30) + (Number(product.price) * 5.30 * 0.065))) ;
     }    
-    return (total + (product.price * 5.30));
+    return (total + (Number(product.price) * 5.30));
   }, 0)
 
   return(
