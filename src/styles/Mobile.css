@@ -100,7 +100,7 @@ body {
   .aside {
     background-color: #085f34;
     height: 91.2%;
-    width: 50%;
+    width: 200px;
     position: absolute;
     top: 55px;
     z-index: 1;
@@ -113,7 +113,7 @@ body {
   }
 
   .aside-false {
-    left: -50%;
+    left: -200px;
   }
 
   .aside-true {
@@ -131,6 +131,10 @@ body {
     width: 90%;
   }
   
+  main h1 {
+    margin: 10px auto
+  }
+
   main > p:nth-child(1) {
     font-size: 30px;
   }
