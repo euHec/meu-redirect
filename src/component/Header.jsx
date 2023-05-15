@@ -22,11 +22,11 @@ export default function Header() {
       <label className="icon-cart">
         <span>
           { 
-            pathname === '/product'&& listProduct.length !== 0 && listProduct.length 
+            pathname === '/meu-redirect/product'&& listProduct.length !== 0 && listProduct.length 
           }
         </span>
         {
-          pathname === '/product'
+          pathname === '/meu-redirect/product'
           ? <AiOutlineShoppingCart onClick={ () => push('/meu-redirect/cart') } />
           : <IoReturnDownBack onClick={ () => push('/meu-redirect/product') } />
         }
